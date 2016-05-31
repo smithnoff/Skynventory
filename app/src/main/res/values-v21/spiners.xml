@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string-array name="elemento">
+        <item >Elija una Opcion</item>
+        <item >categoria</item>
+        <item >zona</item>
+        <item >marca</item>
+        <item >otro</item>
+
+    </string-array>
+
+
+
+
+
+
+
+</resources>

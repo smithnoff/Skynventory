@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:fab="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/skylogo">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Presione para realizar una accion"
+        android:id="@+id/textView"
+
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+        
+    <com.github.clans.fab.FloatingActionMenu
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textView"
+        android:id="@+id/menuBoton"
+        fab:menu_fab_size="normal"
+        fab:menu_openDirection="down"
+        fab:menu_fab_label="MENU DE OPCIONES"
+        fab:menu_labels_position="right"
+        android:layout_centerVertical="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
+
+
+
+
+        <com.github.clans.fab.FloatingActionButton
+            android:id="@+id/menu_item5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@android:drawable/ic_dialog_info"
+            fab:fab_size="normal"
+            fab:fab_label="ACERCA DE" />
+        <com.github.clans.fab.FloatingActionButton
+            android:id="@+id/menu_item6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@android:drawable/ic_menu_compass"
+            fab:fab_colorNormal="#E98e09"
+            fab:fab_size="normal"
+            fab:fab_label="CONFIGURAR" />
+        <com.github.clans.fab.FloatingActionButton
+            android:id="@+id/menu_item4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@android:drawable/ic_menu_upload"
+            fab:fab_colorNormal="#D500F9"
+            fab:fab_size="normal"
+            fab:fab_label="EXPORTAR" />
+
+        <com.github.clans.fab.FloatingActionButton
+            android:id="@+id/menu_item3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@android:drawable/ic_menu_agenda"
+            fab:fab_colorNormal="#FFEA00"
+            fab:fab_size="normal"
+            fab:fab_label="ESTADO DE ARTICULOS" />
+        <com.github.clans.fab.FloatingActionButton
+            android:id="@+id/menu_item2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@android:drawable/ic_menu_search"
+            fab:fab_colorNormal="#0D47A1"
+            fab:fab_size="normal"
+            fab:fab_label="BUSQUEDA" />
+        <com.github.clans.fab.FloatingActionButton
+            android:id="@+id/menu_item"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@android:drawable/ic_menu_add"
+            fab:fab_colorNormal="#76FF03"
+            fab:fab_size="normal"
+            fab:fab_label="AGREGAR" />
+    </com.github.clans.fab.FloatingActionMenu>
+
+
+
+
+</RelativeLayout>
