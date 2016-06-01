@@ -150,11 +150,11 @@ public class Estado extends AppCompatActivity {
         public CharSequence getPageTitle(int position) {
             switch (position) {
                 case 0:
-                    return "SECTION 1";
+                    return "Buenos/Nuevos";
                 case 1:
-                    return "SECTION 2";
+                    return "Mal Estado";
                 case 2:
-                    return "SECTION 3";
+                    return "Reparacion";
             }
             return null;
         }
