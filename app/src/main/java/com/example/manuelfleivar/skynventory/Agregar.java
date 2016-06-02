@@ -5,6 +5,7 @@ package com.example.manuelfleivar.skynventory;
 import android.app.DatePickerDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.opengl.Visibility;
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AlertDialog;
@@ -12,8 +13,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -28,6 +32,7 @@ public class Agregar extends AppCompatActivity {
     Spinner spCategoria;
     DBManager mn;
     EditText codigo, nombre, fadquisicion, fvencimiento, marca, colsab, modelo, referencia, ubicacion;
+    CheckBox pcodigo;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -150,6 +155,19 @@ fadquisicion.setOnFocusChangeListener(new View.OnFocusChangeListener() {
 
             }
         });
+        final LinearLayout contenedorCodigo=(LinearLayout)findViewById(R.id.contenedorCodigo);
+        pcodigo.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked){
+                    contenedorCodigo.setVisibility(View.VISIBLE);
+                }else{
+                    contenedorCodigo.setVisibility(View.GONE);
+                }
+            }
+        });
+
+
     }
 
     public void onActivityResult(int requestCode, int resultCode, Intent intent) {
