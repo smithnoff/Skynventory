@@ -5,7 +5,6 @@ package com.example.manuelfleivar.skynventory;
 import android.app.DatePickerDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.opengl.Visibility;
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AlertDialog;
@@ -31,6 +30,7 @@ public class Agregar extends AppCompatActivity {
     Button escanear, guardar;
     Spinner spCategoria;
     DBManager mn;
+    LinearLayout contenedorCodigo;
     EditText codigo, nombre, fadquisicion, fvencimiento, marca, colsab, modelo, referencia, ubicacion;
     CheckBox pcodigo;
     @Override
@@ -155,7 +155,8 @@ fadquisicion.setOnFocusChangeListener(new View.OnFocusChangeListener() {
 
             }
         });
-        final LinearLayout contenedorCodigo=(LinearLayout)findViewById(R.id.contenedorCodigo);
+        contenedorCodigo=(LinearLayout)findViewById(R.id.contenedorCodigo);
+        pcodigo=(CheckBox)findViewById(R.id.chba_poseecod);
         pcodigo.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
