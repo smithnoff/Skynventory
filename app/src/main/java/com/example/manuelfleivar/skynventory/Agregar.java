@@ -2,8 +2,10 @@ package com.example.manuelfleivar.skynventory;
 
 
 
+import android.app.DatePickerDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.opengl.Visibility;
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AlertDialog;
@@ -11,10 +13,15 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
+import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import java.util.Calendar;
 import java.util.List;
 
 import google.zxing.integration.android.IntentIntegrator;
@@ -25,6 +32,7 @@ public class Agregar extends AppCompatActivity {
     Spinner spCategoria;
     DBManager mn;
     EditText codigo, nombre, fadquisicion, fvencimiento, marca, colsab, modelo, referencia, ubicacion;
+    CheckBox pcodigo;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,6 +53,11 @@ public class Agregar extends AppCompatActivity {
             }  });
         mn=new DBManager(Agregar.this);
         nombre=(EditText)findViewById(R.id.eda_nombre);
+        final Calendar c = Calendar.getInstance();
+        final int año = c.get(Calendar.YEAR);
+        final int mes = c.get(Calendar.MONTH);
+        final int dia = c.get(Calendar.DAY_OF_MONTH);
+
         fadquisicion=(EditText)findViewById(R.id.eda_fadquisicion);
         fvencimiento=(EditText)findViewById(R.id.eda_fvencimiento);
         marca=(EditText)findViewById(R.id.eda_marca);
@@ -107,6 +120,54 @@ public class Agregar extends AppCompatActivity {
 
 
         });
+fadquisicion.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+    @Override
+    public void onFocusChange(View v, boolean hasFocus) {
+        if(hasFocus){
+            DatePickerDialog dpdadquisicion = new DatePickerDialog(Agregar.this, new DatePickerDialog.OnDateSetListener() {
+                @Override
+                public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
+                    fadquisicion.setText(year+"-"+(monthOfYear+1)+"-"+dayOfMonth);
+                }
+            }, año, mes, dia);
+            dpdadquisicion.setTitle("Seleccione Fecha");
+            dpdadquisicion.show();
+
+        }
+    }
+
+
+        });
+        fvencimiento.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if(hasFocus){
+                    DatePickerDialog dpdadquisicion = new DatePickerDialog(Agregar.this, new DatePickerDialog.OnDateSetListener() {
+                        @Override
+                        public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
+                            fvencimiento.setText(year+"-"+(monthOfYear+1)+"-"+dayOfMonth);
+                        }
+                    }, año, mes, dia);
+                    dpdadquisicion.setTitle("Seleccione Fecha");
+                    dpdadquisicion.show();
+                    marca.requestFocus();
+                }
+
+            }
+        });
+        final LinearLayout contenedorCodigo=(LinearLayout)findViewById(R.id.contenedorCodigo);
+        pcodigo.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked){
+                    contenedorCodigo.setVisibility(View.VISIBLE);
+                }else{
+                    contenedorCodigo.setVisibility(View.GONE);
+                }
+            }
+        });
+
+
     }
 
     public void onActivityResult(int requestCode, int resultCode, Intent intent) {
