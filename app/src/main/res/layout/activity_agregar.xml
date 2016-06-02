@@ -128,7 +128,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceSmall"
-                android:text="Estado del Articulo:"
+                android:text="Seleccione el Estado del Articulo:"
                 android:id="@+id/textView7"
                 android:layout_gravity="center_horizontal"
                 android:textColorHint="@color/colorAccent"
