@@ -1,7 +1,8 @@
 package com.example.manuelfleivar.skynventory;
 
-import android.support.v7.app.AppCompatActivity;
+import android.app.AlertDialog;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
@@ -10,7 +11,6 @@ import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.util.List;
 
@@ -43,7 +43,11 @@ public class Buscar extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 // make Toast when click
-                Toast.makeText(getApplicationContext(), "Position " + position, Toast.LENGTH_LONG).show();
+                AlertDialog.Builder alerta=new AlertDialog.Builder(Buscar.this);
+                alerta.setTitle("Producto:").setIcon(R.drawable.skylogo).setMessage("seleccion:"+listAdapter.getItem(0).toString());
+                alerta.setNeutralButton("OK",null).create().show();
+
+
             }
         });
         filterText.addTextChangedListener(new TextWatcher() {

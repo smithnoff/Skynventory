@@ -13,6 +13,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/menub_exportar"
+
         fab:menu_fab_size="normal"
         fab:menu_openDirection="down"
         fab:menu_fab_label="MENU DE OPCIONES"
