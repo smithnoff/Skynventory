@@ -31,7 +31,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@android:drawable/ic_menu_upload"
-            fab:fab_colorNormal="#D500F9"
+            fab:fab_colorNormal="@color/colorPrimaryDark"
             fab:fab_size="normal"
             fab:fab_label="Exportar Todo" />
         <com.github.clans.fab.FloatingActionButton
@@ -39,7 +39,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@android:drawable/ic_menu_manage"
-            fab:fab_colorNormal="#E98e09"
+            fab:fab_colorNormal="@color/colorPrimary"
             fab:fab_size="normal"
             fab:fab_label="Articulos Dañados" />
         <com.github.clans.fab.FloatingActionButton
@@ -47,9 +47,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@android:drawable/ic_menu_add"
+            fab:fab_colorNormal="@color/colorAccent"
             fab:fab_size="normal"
             fab:fab_label="Exportar" />
-
     </com.github.clans.fab.FloatingActionMenu>
 
 </RelativeLayout>
