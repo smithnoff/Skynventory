@@ -19,6 +19,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/textView"
         android:id="@+id/menuBoton"
+        fab:menu_colorNormal="#FF1633E9"
         fab:menu_fab_size="normal"
         fab:menu_openDirection="down"
         fab:menu_fab_label="MENU DE OPCIONES"
