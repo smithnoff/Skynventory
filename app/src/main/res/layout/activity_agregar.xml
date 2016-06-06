@@ -172,7 +172,7 @@
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:text="Aceptar"
-                android:textColor="#ffffff"
+                android:textColor="@android:color/white"
                 android:background="@drawable/bt_circle"
                 android:id="@+id/bta_guardar"
                 android:layout_gravity="top|center_horizontal" />

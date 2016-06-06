@@ -37,7 +37,7 @@
             android:id="@+id/menu_i2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@android:drawable/ic_menu_compass"
+            android:src="@android:drawable/ic_menu_manage"
             fab:fab_colorNormal="#E98e09"
             fab:fab_size="normal"
             fab:fab_label="Articulos Dañados" />
@@ -45,7 +45,7 @@
             android:id="@+id/menu_i3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@android:drawable/ic_dialog_info"
+            android:src="@android:drawable/ic_menu_add"
             fab:fab_size="normal"
             fab:fab_label="Exportar" />
 
