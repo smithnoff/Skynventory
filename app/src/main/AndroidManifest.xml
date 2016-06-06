@@ -3,6 +3,7 @@
     package="com.example.manuelfleivar.skynventory">
 <uses-permission android:name="android.permission.INTERNET"/>
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
     <application
         android:allowBackup="true"
@@ -20,12 +21,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Agregar" />
+        <activity android:name=".Agregar" android:label="Agregar Articulos"/>
 
-        <activity android:name=".Configuracion" />
-        <activity android:name=".Buscar" />
-        <activity android:name=".Exportar" />
-        <activity android:name=".Acerca" />
+        <activity android:name=".Configuracion" android:label="Configuracion"/>
+        <activity android:name=".Buscar" android:label="Buscar Articulo"/>
+        <activity android:name=".Exportar" android:label="Exportar Inventario"/>
+        <activity android:name=".Acerca" android:label="Acerca de"/>
         <activity
             android:name=".Estado"
             android:label="@string/title_activity_estado"

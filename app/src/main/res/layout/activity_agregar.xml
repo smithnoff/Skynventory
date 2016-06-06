@@ -146,24 +146,24 @@
                     android:layout_height="wrap_content"
                     android:id="@+id/rba_nuevo"
                     android:checked="true"
-                    android:text="Nuevo" />
+                    android:text="NUEVO" />
 
                 <RadioButton
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="rba_bueno"
+                    android:text="BUENO"
                     android:id="@+id/rba_bueno" />
 
                 <RadioButton
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Dañado"
+                    android:text="MALO"
                     android:id="@+id/rba_danado" />
 
                 <RadioButton
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Reparado"
+                    android:text="REPARADO"
                     android:id="@+id/rba_reparado" />
             </RadioGroup>
 

@@ -4,11 +4,12 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.os.Environment;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
 
 import java.io.File;
-import java.text.SimpleDateFormat;
-import java.util.Date;
+import java.io.IOException;
 import java.util.List;
 import java.util.Locale;
 
@@ -17,6 +18,8 @@ import jxl.WorkbookSettings;
 import jxl.write.Label;
 import jxl.write.WritableSheet;
 import jxl.write.WritableWorkbook;
+import jxl.write.WriteException;
+import jxl.write.biff.RowsExceededException;
 
 public class Exportar extends AppCompatActivity {
     public com.github.clans.fab.FloatingActionButton btExport;
@@ -47,30 +50,68 @@ public class Exportar extends AppCompatActivity {
 
         List<String> articulosLista;
         articulosLista=mn.ObtenerArticulos();
-        currentDate = new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault()).format(new Date());
-        String Fnamexls = "Inventario__" +currentDate+ ".xls";
-        sdCard = Environment.getExternalStorageDirectory();
-        directory = new File(sdCard.getAbsolutePath() + "/Download");
-        directory.mkdirs();
-        file = new File(directory, Fnamexls);
-        file2 = new File(directory, "Carga_de_invetario_" +currentDate+ ".xls");
-        file3 = new File(directory, "Impuesto_Colmena_" +currentDate+ ".xls");
-        wbSettings = new WorkbookSettings();
 
-        wbSettings.setLocale(new Locale("es", "ES"));
-        try {
-
-            workbook = Workbook.createWorkbook(file, wbSettings);
-            workbook2 = Workbook.createWorkbook(file2, wbSettings);
-
-
-            sheet = workbook.createSheet("SAPROD", 0);
-
-        } catch (Exception i) {
-
-        }
 
         btExport=(com.github.clans.fab.FloatingActionButton)findViewById(R.id.menu_i1);
+        btExport.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String Fnamexls="Inventario"  + ".xls";
+                File sdCard = Environment.getExternalStorageDirectory();
+                File directory = new File (sdCard.getAbsolutePath() + "/Download");
+                directory.mkdirs();
+                File file = new File(directory, Fnamexls);
+
+                WorkbookSettings wbSettings = new WorkbookSettings();
+
+                wbSettings.setLocale(new Locale("en", "EN"));
+
+                WritableWorkbook workbook;
+                try {
+                    int a = 1;
+                    workbook = Workbook.createWorkbook(file, wbSettings);
+                    //workbook.createSheet("Report", 0);
+                    WritableSheet sheet = workbook.createSheet("Hoja 1", 0);
+                    Label label = new Label(0,0,  "Codigo");
+                    Label label1 = new Label(1,0,"Nombre");
+                    Label label2 = new Label(2,0,"Marca");
+                    Label label3 = new Label(3,0,"Modelo");
+                    Label label4 = new Label(4,0,"Referencia");
+                    Label label5= new Label(5,0,"Ubicacion");
+                    Label label6 = new Label(6,0,"Fecha Ven.");
+                    try {
+                        sheet.addCell(label);
+                        sheet.addCell(label1);
+                        sheet.addCell(label2);
+                        sheet.addCell(label3);
+                        sheet.addCell(label4);
+                        sheet.addCell(label5);
+                        sheet.addCell(label6);
+                    } catch (RowsExceededException e) {
+                        // TODO Auto-generated catch block
+                        e.printStackTrace();
+                    } catch (WriteException e) {
+                        // TODO Auto-generated catch block
+                        e.printStackTrace();
+                    }
+
+
+                    workbook.write();
+                    try {
+                        workbook.close();
+                    } catch (WriteException e) {
+                        // TODO Auto-generated catch block
+                        e.printStackTrace();
+                    }
+                    //createExcel(excelSheet);
+                } catch (IOException e) {
+                    // TODO Auto-generated catch block
+                    e.printStackTrace();
+                }
+                Snackbar.make(v,"Archivo creado satisfactoriamente: vaya a la carpeta Download para ver archivo",Snackbar.LENGTH_LONG).show();
+            }
+
+        });
 
     }
 }

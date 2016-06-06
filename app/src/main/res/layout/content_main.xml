@@ -10,8 +10,9 @@
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="Presione para realizar una accion"
         android:id="@+id/textView"
-
+android:background="@android:color/black"
         android:layout_alignParentLeft="true"
+        android:textColor="#ffffff"
         android:layout_alignParentStart="true" />
 
     <com.github.clans.fab.FloatingActionMenu
@@ -43,7 +44,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@android:drawable/ic_menu_compass"
-            fab:fab_colorNormal="#E98e09"
+            fab:fab_colorNormal="#163342"
             fab:fab_size="normal"
             fab:fab_label="CONFIGURAR" />
         <com.github.clans.fab.FloatingActionButton
@@ -51,7 +52,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@android:drawable/ic_menu_upload"
-            fab:fab_colorNormal="#D500F9"
+            fab:fab_colorNormal="#163364"
             fab:fab_size="normal"
             fab:fab_label="EXPORTAR" />
 
@@ -60,7 +61,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@android:drawable/ic_menu_agenda"
-            fab:fab_colorNormal="#FFEA00"
+            fab:fab_colorNormal="#163385"
             fab:fab_size="normal"
             fab:fab_label="ESTADO DE ARTICULOS" />
         <com.github.clans.fab.FloatingActionButton
@@ -68,7 +69,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@android:drawable/ic_menu_search"
-            fab:fab_colorNormal="#0D47A1"
+            fab:fab_colorNormal="#1633a6"
             fab:fab_size="normal"
             fab:fab_label="BUSQUEDA" />
         <com.github.clans.fab.FloatingActionButton
@@ -76,7 +77,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@android:drawable/ic_menu_add"
-            fab:fab_colorNormal="#76FF03"
+            fab:fab_colorNormal="#1633c8"
             fab:fab_size="normal"
             fab:fab_label="AGREGAR" />
     </com.github.clans.fab.FloatingActionMenu>
