@@ -5,6 +5,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.os.Environment;
 import android.support.design.widget.Snackbar;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
@@ -147,7 +148,10 @@ public class Exportar extends AppCompatActivity {
         btVersionS.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Snackbar.make(v,"Adquiera la version PRO para utilizar esta opcion.",Snackbar.LENGTH_SHORT).show();
+                AlertDialog.Builder alerta=new AlertDialog.Builder(Exportar.this);
+                alerta.setTitle("Importante");
+
+                alerta.setMessage("Adquiera la version PRO para utilizar esta opcion.");
 
             }
         });
@@ -155,7 +159,11 @@ public class Exportar extends AppCompatActivity {
         btExportarBD.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Snackbar.make(v,"Adquiera la version PRO para utilizar esta opcion.",Snackbar.LENGTH_SHORT).show();
+
+                AlertDialog.Builder alerta=new AlertDialog.Builder(Exportar.this);
+                alerta.setTitle("Importante");
+
+                alerta.setMessage("Adquiera la version PRO para utilizar esta opcion.");
             }
         });
 
