@@ -152,8 +152,9 @@ public class Exportar extends AppCompatActivity {
                 alerta.setTitle("Importante");
 
                 alerta.setMessage("Adquiera la version PRO para utilizar esta opcion.");
-
+                alerta.create().show();
             }
+
         });
         btExportarBD=(com.github.clans.fab.FloatingActionButton)findViewById(R.id.menu_i3);
         btExportarBD.setOnClickListener(new View.OnClickListener() {
@@ -164,8 +165,12 @@ public class Exportar extends AppCompatActivity {
                 alerta.setTitle("Importante");
 
                 alerta.setMessage("Adquiera la version PRO para utilizar esta opcion.");
+                alerta.create().show();
             }
+
         });
+
+
 
     }
 }
