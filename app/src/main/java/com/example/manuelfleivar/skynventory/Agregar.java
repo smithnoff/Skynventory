@@ -106,6 +106,7 @@ public class Agregar extends AppCompatActivity {
                                     ubicacion.getText().toString(),fadquisicion.getText().toString(),
                                     fvencimiento.getText().toString());
                             Toast.makeText(Agregar.this, "Articulo agregado con Exito!!!", Toast.LENGTH_SHORT).show();
+                            //para eliminar al regresar al registro
                             codigo.setText("");
                             nombre.setText("");
                             marca.setText("");
