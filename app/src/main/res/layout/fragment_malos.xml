@@ -11,5 +11,5 @@
         android:layout_height="wrap_content"
         android:id="@+id/listView"
         android:layout_gravity="left|top"
-        android:background="#f00505" />
+        android:background="#fffff" />
 </FrameLayout>
