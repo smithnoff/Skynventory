@@ -21,7 +21,7 @@ import jxl.write.WriteException;
 import jxl.write.biff.RowsExceededException;
 
 public class Exportar extends AppCompatActivity {
-    public com.github.clans.fab.FloatingActionButton btExport;
+    public com.github.clans.fab.FloatingActionButton btExport, btVersionS, btExportarBD;
     public File sdCard, directory, file,file2,file3;
     public WorkbookSettings wbSettings;
     public WritableWorkbook workbook,workbook2,workbook3;
@@ -142,6 +142,21 @@ public class Exportar extends AppCompatActivity {
                 Snackbar.make(v,"Archivo creado satisfactoriamente: vaya a la carpeta Download para ver archivo",Snackbar.LENGTH_LONG).show();
             }
 
+        });
+        btVersionS=(com.github.clans.fab.FloatingActionButton)findViewById(R.id.menu_i2);
+        btVersionS.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Snackbar.make(v,"Adquiera la version PRO para utilizar esta opcion.",Snackbar.LENGTH_SHORT).show();
+
+            }
+        });
+        btExportarBD=(com.github.clans.fab.FloatingActionButton)findViewById(R.id.menu_i3);
+        btExportarBD.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Snackbar.make(v,"Adquiera la version PRO para utilizar esta opcion.",Snackbar.LENGTH_SHORT).show();
+            }
         });
 
     }
