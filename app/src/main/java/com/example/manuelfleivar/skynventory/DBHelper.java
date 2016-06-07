@@ -8,7 +8,7 @@ import android.database.sqlite.SQLiteOpenHelper;
  * Created by Manuelfleivar on 29/5/16.
  */
 public class DBHelper extends SQLiteOpenHelper {
-    public static final String name="RSMinventdb1";
+    public static final String name="Skynventory";
     public static final int version=1;
     public DBHelper(Context context) {
         super(context, name, null, version);

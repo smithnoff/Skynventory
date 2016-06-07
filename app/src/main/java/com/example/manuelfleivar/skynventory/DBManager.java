@@ -30,7 +30,7 @@ public class DBManager {
 
     public static final String crearArticulos_t="CREATE TABLE articulos(_id INTEGER PRIMARY KEY AUTOINCREMENT, marca TEXT(20), " +
             "codigo TEXT(15) NOT NULL, nombre TEXT NOT NULL, " +
-            "colorsabor TEXT, referencia TEXT,modelo TEXT, ubicacion TEXT, fechaadq TEXT, fechaven TEXT);";
+            "colorsabor TEXT, referencia TEXT,modelo TEXT, ubicacion TEXT, fechaadq TEXT, fechaven TEXT,estado INTEGER);";
     DBHelper helper;
     SQLiteDatabase db;
 
@@ -68,11 +68,11 @@ public class DBManager {
     }
 
     //Metodos para agregar y obtener articulos
-    public void insertarArticulo(String cod,String nom,String mar,String ref,String mod,String ubi,String fad,String fvn,String cols)
+    public void insertarArticulo(String cod,String nom,String mar,String ref,String mod,String ubi,String fad,String fvn,String cols,int stt)
     {
-        db.insert(tabla2,null,ContenedorArticulos(cod,nom,mar,ref,mod,ubi,fad,fvn,cols));
+        db.insert(tabla2,null,ContenedorArticulos(cod,nom,mar,ref,mod,ubi,fad,fvn,cols,stt));
     }
-    public ContentValues ContenedorArticulos(String cod,String nom,String mar,String ref,String mod,String ubi,String fad,String fvn,String cols)
+    public ContentValues ContenedorArticulos(String cod,String nom,String mar,String ref,String mod,String ubi,String fad,String fvn,String cols,int stt)
     {
         ContentValues contenedor=new ContentValues();
         contenedor.put("nombre",nom);
@@ -84,6 +84,7 @@ public class DBManager {
         contenedor.put("ubicacion",ubi);
         contenedor.put("fechaadq",fad);
         contenedor.put("fechaven",fvn);
+        contenedor.put("estado",stt);
         return contenedor;
 
     }

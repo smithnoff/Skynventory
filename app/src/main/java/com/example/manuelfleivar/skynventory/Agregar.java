@@ -20,6 +20,7 @@ import android.widget.CompoundButton;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -36,12 +37,13 @@ public class Agregar extends AppCompatActivity {
     LinearLayout contenedorCodigo;
     EditText codigo, nombre, fadquisicion, fvencimiento, marca, colsab, modelo, referencia, ubicacion;
     CheckBox pcodigo;
+    RadioGroup rgEstado;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_agregar);
         codigo=(EditText)findViewById(R.id.eda_codigo);
-
+       rgEstado=(RadioGroup)findViewById(R.id.rga_radiogroup);
         escanear=(Button)findViewById(R.id.bta_escanear);
         escanear.setOnClickListener(new View.OnClickListener() {
 
@@ -71,7 +73,7 @@ public class Agregar extends AppCompatActivity {
         ubicacion=(EditText)findViewById(R.id.eda_ubicacion);
         guardar=(Button)findViewById(R.id.bta_guardar);
         List<String> lista=mn.ObtenerCategorias();
-
+        codigo.setText("N/A");
         ArrayAdapter<String> data=new ArrayAdapter<String>(Agregar.this,android.R.layout.simple_spinner_item,lista);
         data.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
@@ -101,11 +103,27 @@ public class Agregar extends AppCompatActivity {
                     alerta.setPositiveButton("Aceptar", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
+                            int idEstado=0;
+                            switch (rgEstado.getCheckedRadioButtonId())
+                            {
+                                case R.id.rba_nuevo:
+                                    idEstado=1;
+                                    break;
+                                case R.id.rba_bueno:
+                                    idEstado=2;
+                                    break;
+                                case R.id.rba_danado:
+                                    idEstado=3;
+                                    break;
+                                case R.id.rba_reparado:
+                                    idEstado=4;
+                                    break;
+                            }
                             mn.insertarArticulo(codigo.getText().toString(),
                                     nombre.getText().toString(),marca.getText().toString(),
                                     referencia.getText().toString(),modelo.getText().toString(),
                                     ubicacion.getText().toString(),fadquisicion.getText().toString(),
-                                    fvencimiento.getText().toString(),colsab.getText().toString());
+                                    fvencimiento.getText().toString(),colsab.getText().toString(),idEstado);
                             Toast.makeText(Agregar.this, "Articulo agregado con Exito!!!", Toast.LENGTH_SHORT).show();
                             //para eliminar al regresar al registro
                             codigo.setText("");
@@ -115,6 +133,7 @@ public class Agregar extends AppCompatActivity {
                             modelo.setText("");
                             ubicacion.setText("");
                             fadquisicion.setText("");
+                            colsab.setText("");
                             fvencimiento.setText("");
 
                         }
@@ -176,6 +195,7 @@ fadquisicion.setOnFocusChangeListener(new View.OnFocusChangeListener() {
                     contenedorCodigo.setVisibility(View.VISIBLE);
                 }else{
                     contenedorCodigo.setVisibility(View.GONE);
+                    codigo.setText("N/A");
                 }
             }
         });

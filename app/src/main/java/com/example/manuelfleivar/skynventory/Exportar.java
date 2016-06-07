@@ -145,32 +145,22 @@ public class Exportar extends AppCompatActivity {
 
         });
         btVersionS=(com.github.clans.fab.FloatingActionButton)findViewById(R.id.menu_i2);
-        btVersionS.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                AlertDialog.Builder alerta=new AlertDialog.Builder(Exportar.this);
-                alerta.setTitle("Importante");
 
-                alerta.setMessage("Adquiera la version PRO para utilizar esta opcion.");
-                alerta.create().show();
-            }
-
-        });
         btExportarBD=(com.github.clans.fab.FloatingActionButton)findViewById(R.id.menu_i3);
-        btExportarBD.setOnClickListener(new View.OnClickListener() {
+
+
+        View.OnClickListener listener=new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 AlertDialog.Builder alerta=new AlertDialog.Builder(Exportar.this);
                 alerta.setTitle("Importante");
 
-                alerta.setMessage("Adquiera la version PRO para utilizar esta opcion.");
+                alerta.setMessage("Adquiera la version PRO para utilizar esta opcion.").setIcon(R.drawable.skylogo);
                 alerta.create().show();
             }
-
-        });
-
-
+        };
+        btExportarBD.setOnClickListener(listener);
+        btVersionS.setOnClickListener(listener);
 
     }
 }
