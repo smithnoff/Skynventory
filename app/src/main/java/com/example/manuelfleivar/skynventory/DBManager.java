@@ -27,6 +27,7 @@ public class DBManager {
     public static final String descripcion="descripcion";
     public static final String crearCategorias_t=" create table "+tabla+" " +
             "("+catId+" integer primary key autoincrement,"+nombre+" text not null,"+descripcion+" text);";
+
     public static final String crearArticulos_t="CREATE TABLE articulos(_id INTEGER PRIMARY KEY AUTOINCREMENT, marca TEXT(20), " +
             "codigo TEXT(15) NOT NULL, nombre TEXT NOT NULL, " +
             "colorsabor TEXT, referencia TEXT,modelo TEXT, ubicacion TEXT, fechaadq TEXT, fechaven TEXT);";
@@ -67,15 +68,16 @@ public class DBManager {
     }
 
     //Metodos para agregar y obtener articulos
-    public void insertarArticulo(String cod,String nom,String mar,String ref,String mod,String ubi,String fad,String fvn)
+    public void insertarArticulo(String cod,String nom,String mar,String ref,String mod,String ubi,String fad,String fvn,String cols)
     {
-        db.insert(tabla2,null,ContenedorArticulos(cod,nom,mar,ref,mod,ubi,fad,fvn));
+        db.insert(tabla2,null,ContenedorArticulos(cod,nom,mar,ref,mod,ubi,fad,fvn,cols));
     }
-    public ContentValues ContenedorArticulos(String cod,String nom,String mar,String ref,String mod,String ubi,String fad,String fvn)
+    public ContentValues ContenedorArticulos(String cod,String nom,String mar,String ref,String mod,String ubi,String fad,String fvn,String cols)
     {
         ContentValues contenedor=new ContentValues();
         contenedor.put("nombre",nom);
         contenedor.put("codigo",cod);
+        contenedor.put("colorsabor",cols);
         contenedor.put("marca",mar);
         contenedor.put("referencia",ref);
         contenedor.put("modelo",mod);

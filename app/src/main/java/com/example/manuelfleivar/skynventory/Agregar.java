@@ -5,6 +5,7 @@ package com.example.manuelfleivar.skynventory;
 import android.app.DatePickerDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.database.Cursor;
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AlertDialog;
@@ -90,7 +91,7 @@ public class Agregar extends AppCompatActivity {
                     alerta.setMessage("Codigo:"+ codigo.getText().toString()+
                             "\nMarca:"+marca.getText().toString()+
                             "\nNombre:"+nombre.getText().toString()+
-                            "\nCodigo / Sabor:"+ colsab.getText().toString()+
+                            "\nColor / Sabor:"+ colsab.getText().toString()+
                             "\nModelo:"+modelo.getText().toString()+
                             "\nReferencia:"+referencia.getText().toString()+
                             "\nFecha de Adquisicion:"+fadquisicion.getText().toString()+
@@ -104,8 +105,9 @@ public class Agregar extends AppCompatActivity {
                                     nombre.getText().toString(),marca.getText().toString(),
                                     referencia.getText().toString(),modelo.getText().toString(),
                                     ubicacion.getText().toString(),fadquisicion.getText().toString(),
-                                    fvencimiento.getText().toString());
+                                    fvencimiento.getText().toString(),colsab.getText().toString());
                             Toast.makeText(Agregar.this, "Articulo agregado con Exito!!!", Toast.LENGTH_SHORT).show();
+                            //para eliminar al regresar al registro
                             codigo.setText("");
                             nombre.setText("");
                             marca.setText("");
@@ -217,6 +219,18 @@ fadquisicion.setOnFocusChangeListener(new View.OnFocusChangeListener() {
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_agregar) {
+            Cursor ultimo=mn.ObtenerArticulosc();
+            ultimo.moveToLast();
+            nombre.setText(ultimo.getString(3));
+            marca.setText(ultimo.getString(1));
+            codigo.setText(ultimo.getString(2));
+            colsab.setText(ultimo.getString(4));
+            modelo.setText(ultimo.getString(6));
+            referencia.setText(ultimo.getString(5));
+            ubicacion.setText(ultimo.getString(7));
+
+
+
             return true;
         }
 
