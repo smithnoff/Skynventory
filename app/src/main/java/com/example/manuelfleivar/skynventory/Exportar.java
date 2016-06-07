@@ -10,7 +10,6 @@ import android.view.View;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.List;
 import java.util.Locale;
 
 import jxl.Workbook;
@@ -48,8 +47,8 @@ public class Exportar extends AppCompatActivity {
         db = helper.getWritableDatabase();
         mn = new DBManager(this);
 
-        List<String> articulosLista;
-        articulosLista=mn.ObtenerArticulos();
+        final Cursor articulosLista;
+        articulosLista=mn.ObtenerArticulosc();
 
 
         btExport=(com.github.clans.fab.FloatingActionButton)findViewById(R.id.menu_i1);
@@ -68,7 +67,7 @@ public class Exportar extends AppCompatActivity {
 
                 WritableWorkbook workbook;
                 try {
-                    int a = 1;
+                    int fila = 1;
                     workbook = Workbook.createWorkbook(file, wbSettings);
                     //workbook.createSheet("Report", 0);
                     WritableSheet sheet = workbook.createSheet("Hoja 1", 0);
@@ -94,6 +93,38 @@ public class Exportar extends AppCompatActivity {
                         // TODO Auto-generated catch block
                         e.printStackTrace();
                     }
+                 if (articulosLista.getCount()>0)
+                 {
+                     articulosLista.moveToFirst();
+                     do {
+
+                         Label label8 = new Label(0,fila, articulosLista.getString(1));
+                         Label label9 = new Label(1,fila,articulosLista.getString(2));
+                         Label label10 = new Label(2,fila,articulosLista.getString(3));
+                         Label label11= new Label(3,fila,articulosLista.getString(4));
+                         Label label12 = new Label(4,fila,articulosLista.getString(5));
+                         Label label13= new Label(5,fila,articulosLista.getString(6));
+                         Label label14 = new Label(6,fila,articulosLista.getString(7));
+                         try {
+                             sheet.addCell(label14);
+                             sheet.addCell(label8);
+                             sheet.addCell(label9);
+                             sheet.addCell(label10);
+                             sheet.addCell(label11);
+                             sheet.addCell(label12);
+                             sheet.addCell(label13);
+                         } catch (RowsExceededException e) {
+                             // TODO Auto-generated catch block
+                             e.printStackTrace();
+                         } catch (WriteException e) {
+                             // TODO Auto-generated catch block
+                             e.printStackTrace();
+                         }
+                         fila++;
+
+                     }while (articulosLista.moveToNext());
+
+                 }
 
 
                     workbook.write();
