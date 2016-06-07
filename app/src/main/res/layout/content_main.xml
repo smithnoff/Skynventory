@@ -10,7 +10,7 @@
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="Presione para realizar una accion"
         android:id="@+id/textView"
-android:background="@android:color/black"
+        android:background="@android:color/black"
         android:layout_alignParentLeft="true"
         android:textColor="#ffffff"
         android:layout_alignParentStart="true" />

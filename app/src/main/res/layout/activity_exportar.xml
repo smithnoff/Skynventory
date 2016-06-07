@@ -20,7 +20,8 @@
         fab:menu_labels_position="right"
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true">
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="30dp">
 
 
 
@@ -33,7 +34,7 @@
             android:src="@android:drawable/ic_menu_upload"
             fab:fab_colorNormal="@color/colorPrimaryDark"
             fab:fab_size="normal"
-            fab:fab_label="Exportar Todo" />
+            fab:fab_label="Exportar Base de Datos" />
         <com.github.clans.fab.FloatingActionButton
             android:id="@+id/menu_i2"
             android:layout_width="wrap_content"
@@ -41,7 +42,7 @@
             android:src="@android:drawable/ic_menu_manage"
             fab:fab_colorNormal="@color/colorPrimary"
             fab:fab_size="normal"
-            fab:fab_label="Articulos Dañados" />
+            fab:fab_label="Version Saint" />
         <com.github.clans.fab.FloatingActionButton
             android:id="@+id/menu_i3"
             android:layout_width="wrap_content"
@@ -49,7 +50,18 @@
             android:src="@android:drawable/ic_menu_add"
             fab:fab_colorNormal="@color/colorAccent"
             fab:fab_size="normal"
-            fab:fab_label="Exportar" />
+            fab:fab_label="Normal" />
     </com.github.clans.fab.FloatingActionMenu>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Presione para Exportar Inventario"
+        android:id="@+id/textView9"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:textSize="20dp"
+        android:textColor="@android:color/black" />
 
 </RelativeLayout>

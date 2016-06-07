@@ -106,6 +106,14 @@ public class Agregar extends AppCompatActivity {
                                     ubicacion.getText().toString(),fadquisicion.getText().toString(),
                                     fvencimiento.getText().toString());
                             Toast.makeText(Agregar.this, "Articulo agregado con Exito!!!", Toast.LENGTH_SHORT).show();
+                            codigo.setText("");
+                            nombre.setText("");
+                            marca.setText("");
+                            referencia.setText("");
+                            modelo.setText("");
+                            ubicacion.setText("");
+                            fadquisicion.setText("");
+                            fvencimiento.setText("");
 
                         }
                     });

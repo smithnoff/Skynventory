@@ -14,13 +14,14 @@ import android.widget.Spinner;
 public class Configuracion extends Activity {
     EditText elemento;
     Spinner listaElemento;
-    Button agregar;
+    Button agregar, eliminar;
     DBManager mn;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_configuracion);
         agregar=(Button)findViewById(R.id.btAddCat);
+        eliminar=(Button)findViewById(R.id.btc_eliminar);
         elemento=(EditText)findViewById(R.id.etElemento);
         listaElemento=(Spinner)findViewById(R.id.spAddCategory);
         ArrayAdapter adapter=ArrayAdapter.createFromResource(Configuracion.this,R.array.elemento,android.R.layout.simple_spinner_item);
@@ -52,6 +53,27 @@ public class Configuracion extends Activity {
                                 }
                             }).setNegativeButton("cancelar",null).create().show();
                 }
+
+
+
+            }
+
+        });
+        eliminar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                AlertDialog.Builder alerta=new AlertDialog.Builder(Configuracion.this);
+                alerta.setTitle("¿Esta seguro que desea eliminar la Base de datos?")
+                        .setMessage("Esta a punto de eliminar toda la informacion en la Base de datos.")
+                        .setPositiveButton("Aceptar", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+
+                                mn.borrarDB(2);
+
+                            }
+                        }).setNegativeButton("Cancelar",null).create().show();
 
 
 

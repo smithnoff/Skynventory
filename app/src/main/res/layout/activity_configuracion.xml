@@ -56,7 +56,7 @@
             android:orientation="vertical"
             android:gravity="center"
             android:weightSum="1"
-            android:layout_weight="0.54">
+            android:layout_weight="0.46">
 
             <View
                 android:layout_width="match_parent"
@@ -83,7 +83,7 @@
             android:layout_width="80dp"
             android:layout_height="80dp"
             android:text="Eliminar"
-            android:id="@+id/button"
+            android:id="@+id/btc_eliminar"
             android:layout_gravity="center_horizontal"
             android:background="@drawable/bt_circle"
             android:textColor="@android:color/white" />
