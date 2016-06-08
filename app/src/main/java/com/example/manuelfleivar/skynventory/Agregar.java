@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -35,7 +36,7 @@ public class Agregar extends AppCompatActivity {
     Spinner spCategoria;
     DBManager mn;
     LinearLayout contenedorCodigo;
-    EditText codigo, nombre, fadquisicion, fvencimiento, marca, colsab, modelo, referencia, ubicacion;
+    EditText codigo, nombre, fadquisicion, fvencimiento, marca, color, modelo, referencia, ubicacion;
     CheckBox pcodigo;
     RadioGroup rgEstado;
     @Override
@@ -67,7 +68,7 @@ public class Agregar extends AppCompatActivity {
         fadquisicion=(EditText)findViewById(R.id.eda_fadquisicion);
         fvencimiento=(EditText)findViewById(R.id.eda_fvencimiento);
         marca=(EditText)findViewById(R.id.eda_marca);
-        colsab=(EditText)findViewById(R.id.eda_colsab);
+        color=(EditText)findViewById(R.id.eda_color);
         modelo=(EditText)findViewById(R.id.eda_modelo);
         spCategoria=(Spinner)findViewById(R.id.spa_categoria) ;
         referencia=(EditText)findViewById(R.id.eda_referencia);
@@ -85,7 +86,7 @@ public class Agregar extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if(codigo.getText().toString().isEmpty() || nombre.getText().toString().isEmpty()){
-                    Snackbar.make(v,"El nombre y el codigo no puede ir vacios",Snackbar.LENGTH_SHORT).show();
+                    Snackbar.make(v,"El nombre o el codigo no puede ir vacios",Snackbar.LENGTH_SHORT).show();
 
                 }else{
                     AlertDialog.Builder alerta=new AlertDialog.Builder(Agregar.this);
@@ -94,14 +95,14 @@ public class Agregar extends AppCompatActivity {
                     alerta.setMessage("Codigo:"+ codigo.getText().toString()+
                             "\nMarca:"+marca.getText().toString()+
                             "\nNombre:"+nombre.getText().toString()+
-                            "\nColor / Sabor:"+ colsab.getText().toString()+
+                            "\nColor / Sabor:"+ color.getText().toString()+
                             "\nModelo:"+modelo.getText().toString()+
                             "\nReferencia:"+referencia.getText().toString()+
                             "\nFecha de Adquisicion:"+fadquisicion.getText().toString()+
                             "\nFecha de Vencimiento:"+fvencimiento.getText().toString()+
                             "\nUbicacion:"+ubicacion.getText().toString());
 
-                    alerta.setPositiveButton("Aceptar", new DialogInterface.OnClickListener() {
+                    alerta.setPositiveButton("Guardar", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
                             int idEstado=0;
@@ -124,7 +125,7 @@ public class Agregar extends AppCompatActivity {
                                     nombre.getText().toString(),marca.getText().toString(),
                                     referencia.getText().toString(),modelo.getText().toString(),
                                     ubicacion.getText().toString(),fadquisicion.getText().toString(),
-                                    fvencimiento.getText().toString(),colsab.getText().toString(),idEstado);
+                                    fvencimiento.getText().toString(),color.getText().toString(),idEstado);
                             Toast.makeText(Agregar.this, "Articulo agregado con Exito!!!", Toast.LENGTH_SHORT).show();
                             //para eliminar al regresar al registro
                             codigo.setText("");
@@ -134,7 +135,7 @@ public class Agregar extends AppCompatActivity {
                             modelo.setText("");
                             ubicacion.setText("");
                             fadquisicion.setText("");
-                            colsab.setText("");
+                            color.setText("");
                             fvencimiento.setText("");
 
                         }
@@ -195,6 +196,8 @@ fadquisicion.setOnFocusChangeListener(new View.OnFocusChangeListener() {
                 if (isChecked){
                     contenedorCodigo.setVisibility(View.VISIBLE);
                 }else{
+
+
                     contenedorCodigo.setVisibility(View.GONE);
                     codigo.setText("N/A");
                 }
@@ -245,7 +248,7 @@ fadquisicion.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             nombre.setText(ultimo.getString(3));
             marca.setText(ultimo.getString(1));
             codigo.setText(ultimo.getString(2));
-            colsab.setText(ultimo.getString(4));
+            color.setText(ultimo.getString(4));
             modelo.setText(ultimo.getString(6));
             referencia.setText(ultimo.getString(5));
             ubicacion.setText(ultimo.getString(7));

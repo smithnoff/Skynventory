@@ -7,7 +7,7 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context=".Agregar"
+    tools:context="Agregar"
     android:orientation="horizontal">
 
     <ScrollView
@@ -95,8 +95,8 @@
             <EditText
                 android:layout_width="317dp"
                 android:layout_height="wrap_content"
-                android:id="@+id/eda_colsab"
-                android:hint="Color/Sabor"
+                android:id="@+id/eda_color"
+                android:hint="Color"
                 android:singleLine="true"
                 android:textColorHint="@color/colorAccent" />
 
@@ -116,15 +116,27 @@
                 android:singleLine="true"
                 android:textColorHint="@color/colorAccent" />
 
-            <EditText
-                android:layout_width="317dp"
-                android:layout_height="wrap_content"
-                android:id="@+id/eda_ubicacion"
-                android:hint="Ubicacion"
-                android:singleLine="true"
-                android:textColorHint="@color/colorAccent"
-                android:textColorHighlight="@color/colorAccent"
-                android:layout_marginBottom="10sp" />
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <EditText
+                    android:layout_width="215dp"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/eda_ubicacion"
+                    android:hint="Ubicacion"
+                    android:singleLine="true"
+                    android:textColorHint="@color/colorAccent"
+                    android:textColorHighlight="@color/colorAccent"
+                    android:layout_marginBottom="10sp" />
+
+                <Spinner
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/spinner"
+                    android:layout_weight="1" />
+            </LinearLayout>
 
             <TextView
                 android:layout_width="match_parent"
@@ -146,24 +158,24 @@
                     android:layout_height="wrap_content"
                     android:id="@+id/rba_nuevo"
                     android:checked="true"
-                    android:text="NUEVO" />
+                    android:text="Nuevo" />
 
                 <RadioButton
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="BUENO"
+                    android:text="rba_bueno"
                     android:id="@+id/rba_bueno" />
 
                 <RadioButton
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="MALO"
+                    android:text="Dañado"
                     android:id="@+id/rba_danado" />
 
                 <RadioButton
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="REPARADO"
+                    android:text="Reparado"
                     android:id="@+id/rba_reparado" />
             </RadioGroup>
 
@@ -172,7 +184,7 @@
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:text="Aceptar"
-                android:textColor="@android:color/white"
+                android:textColor="#ffffff"
                 android:background="@drawable/bt_circle"
                 android:id="@+id/bta_guardar"
                 android:layout_gravity="top|center_horizontal" />

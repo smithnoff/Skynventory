@@ -21,7 +21,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Agregar" android:label="Agregar Articulos"/>
+        <activity android:name=".Agregar" android:label="Agregar Articulos" />
 
         <activity android:name=".Configuracion" android:label="Configuracion"/>
         <activity android:name=".Buscar" android:label="Buscar Articulo"/>
