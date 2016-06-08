@@ -114,7 +114,14 @@ public class DBManager {
 
         return c;
     }
+    public Cursor ObtenerArticulosc(int x) {
 
+        List<String> articulos= new ArrayList<>();
+        Cursor c=db.rawQuery("select * from "+tabla2+" where estado = "+x,null);
+
+
+        return c;
+    }
     public void borrarDB(int op)
     {
 

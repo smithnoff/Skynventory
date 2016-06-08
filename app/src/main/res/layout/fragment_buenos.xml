@@ -2,14 +2,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.manuelfleivar.skynventory.FragmentReparacion"
-    android:background="#ffffff">
+    tools:context="com.example.manuelfleivar.skynventory.FragmentBuenos">
 
     <!-- TODO: Update blank fragment layout -->
 
     <ListView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/listView3"
+        android:id="@+id/listView4"
         android:layout_gravity="left|top" />
+
 </FrameLayout>

@@ -42,6 +42,7 @@ public class Agregar extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_agregar);
+
         codigo=(EditText)findViewById(R.id.eda_codigo);
        rgEstado=(RadioGroup)findViewById(R.id.rga_radiogroup);
         escanear=(Button)findViewById(R.id.bta_escanear);

@@ -118,10 +118,12 @@ public class Estado extends AppCompatActivity {
                 case 0:
 
                     return FragmentNuevos.newInstance();
-                case 1:
+                case 2:
                      return FragmentMalos.newInstance();
-               case 2:
+               case 3:
                     return FragmentReparacion.newInstance();
+                case 1:
+                    return FragmentBuenos.newInstance();
             }
             return PlaceholderFragment.newInstance(position + 1);
         }
@@ -129,18 +131,20 @@ public class Estado extends AppCompatActivity {
         @Override
         public int getCount() {
             // Show 3 total pages.
-            return 3;
+            return 4;
         }
 
         @Override
         public CharSequence getPageTitle(int position) {
             switch (position) {
                 case 0:
-                    return "Buenos/Nuevos";
+                    return "Nuevos";
                 case 1:
-                    return "Mal Estado";
+                    return "Buenos";
                 case 2:
-                    return "Reparacion";
+                    return "Dañado";
+                case 3:
+                    return "Reparar";
             }
             return null;
         }

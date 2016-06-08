@@ -15,15 +15,18 @@ import android.widget.ListView;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class FragmentNuevos extends Fragment {
-ListView lista;
-DBManager mn;
-    public FragmentNuevos() {
+public class FragmentBuenos extends Fragment {
+
+
+    private DBManager mn;
+    private ListView lista;
+
+    public FragmentBuenos() {
         // Required empty public constructor
     }
-    public static FragmentNuevos newInstance(){
+    public static FragmentBuenos newInstance(){
 
-        FragmentNuevos fragment=new FragmentNuevos();
+        FragmentBuenos fragment=new FragmentBuenos();
 
         return fragment;
     }
@@ -31,14 +34,20 @@ DBManager mn;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View v=inflater.inflate(R.layout.fragment_nuevos, container, false);
+        // Inflate the layout for this fragment
+        View v=inflater.inflate(R.layout.fragment_buenos, container, false);
         mn=new DBManager(getContext());
         final Cursor articulosLista;
-        articulosLista=mn.ObtenerArticulosc(1);
+        articulosLista=mn.ObtenerArticulosc(2);
         CursorAdapter adapter=new SimpleCursorAdapter(getContext(),android.R.layout.simple_expandable_list_item_2,articulosLista,new String[]{"codigo","nombre"},new int[]{android.R.id.text1,android.R.id.text2});
-        lista=(ListView)v.findViewById(R.id.listView2);
+        lista=(ListView)v.findViewById(R.id.listView4);
         lista.setAdapter(adapter);
-        // Inflate the layout for this fragment
+
+
+
+
+
+
         return v;
     }
 
