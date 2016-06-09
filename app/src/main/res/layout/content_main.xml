@@ -2,6 +2,8 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:fab="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
+    xmlns:ads="http://schemas.android.com/apk/res-auto"
+
     android:layout_height="match_parent"
     android:background="@drawable/skylogo">
     <TextView
@@ -10,6 +12,7 @@
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="Presione para realizar una accion"
         android:id="@+id/textView"
+
         android:background="@android:color/black"
         android:layout_alignParentLeft="true"
         android:textColor="#ffffff"
@@ -37,7 +40,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@android:drawable/ic_dialog_info"
-            fab:fab_size="normal"
+            fab:fab_size="mini"
             fab:fab_label="ACERCA DE" />
         <com.github.clans.fab.FloatingActionButton
             android:id="@+id/menu_item6"
@@ -45,7 +48,7 @@
             android:layout_height="wrap_content"
             android:src="@android:drawable/ic_menu_compass"
             fab:fab_colorNormal="#163342"
-            fab:fab_size="normal"
+            fab:fab_size="mini"
             fab:fab_label="CONFIGURAR" />
         <com.github.clans.fab.FloatingActionButton
             android:id="@+id/menu_item4"
@@ -53,7 +56,7 @@
             android:layout_height="wrap_content"
             android:src="@android:drawable/ic_menu_upload"
             fab:fab_colorNormal="#163364"
-            fab:fab_size="normal"
+            fab:fab_size="mini"
             fab:fab_label="EXPORTAR" />
 
         <com.github.clans.fab.FloatingActionButton
@@ -62,7 +65,7 @@
             android:layout_height="wrap_content"
             android:src="@android:drawable/ic_menu_agenda"
             fab:fab_colorNormal="#163385"
-            fab:fab_size="normal"
+            fab:fab_size="mini"
             fab:fab_label="ESTADO DE ARTICULOS" />
         <com.github.clans.fab.FloatingActionButton
             android:id="@+id/menu_item2"
@@ -70,7 +73,7 @@
             android:layout_height="wrap_content"
             android:src="@android:drawable/ic_menu_search"
             fab:fab_colorNormal="#1633a6"
-            fab:fab_size="normal"
+            fab:fab_size="mini"
             fab:fab_label="BUSQUEDA" />
         <com.github.clans.fab.FloatingActionButton
             android:id="@+id/menu_item"
@@ -78,7 +81,7 @@
             android:layout_height="wrap_content"
             android:src="@android:drawable/ic_menu_add"
             fab:fab_colorNormal="#1633c8"
-            fab:fab_size="normal"
+            fab:fab_size="mini"
             fab:fab_label="AGREGAR" />
     </com.github.clans.fab.FloatingActionMenu>
 
@@ -92,6 +95,15 @@
         android:layout_toRightOf="@+id/menuBoton"
         android:layout_toEndOf="@+id/menuBoton"
         android:layout_marginTop="95dp" />
+    <com.google.android.gms.ads.AdView
+        android:id="@+id/adView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true"
+        ads:adSize="BANNER"
+        ads:adUnitId="@string/banner_ad_unit_id">
+    </com.google.android.gms.ads.AdView>
 
 
 </RelativeLayout>

@@ -1,9 +1,30 @@
 <resources>
     <string name="app_name">Skynventory</string>
-    <string name="action_settings">Settings</string>
+    <string name="action_settings">Ayuda</string>
     <string name="title_activity_estado">Estado</string>
     <string name="section_format">Hello World from section: %1$d</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="ayudaAgregar">Para agregar un articulo nuevo
+        \nPresione boton Agregar \nluego llene cada uno de los campos correspondientes \nsi ya tiene articulos registrados
+        \npuede seleccionar en la parte superior \nel boton agregar ultimo de \nesta manera podra autocompletar los campos \npara agilizar el proceso de registro.
+
+    </string>
+    <string name="ayudaEliminar">
+        Para Editar o Eliminar un Articulo\nPresione el Boton Buscar\nluego seleccione el \nArticulo de la lista y  debera\naparecer un mensaje para Editar o Eliminar dicho articulo.
+    </string>
+    <string name="ayudaCtategoria">
+        Para agregar categorias y zonas\n
+        presione el boton configuracion\n
+        Luego escriba el nombre y seleccione si es categoria o zona y presione el boton de agregar.
+    </string>
+    <string name="ayudaBaseDatos">
+        Para Eliminar Todos los Datos\npara eliminar la base de datos presione el boton de configuracion\nluego en el segundo apartado selecciona la casilla de la base de datos que desea eliminar puede eliminar una o todas a la vez, luego presione el boton eliminar.
+    </string>
+    <string name="Exportarinv">
+        Para exportar el inventario a un archivo excel.\nPresione el boto de Exportar y luego despliegue el menu de opciones.\npodra seleccionar 3 tipos de formato presione el que desee, y luego dirijase a la carpeta de descargas de su dispositivo para abrir el archivo
+    </string>
+    <string name="banner_ad_unit_id">ca-app-pub-6657569473526754/2836943425</string>
+
 </resources>

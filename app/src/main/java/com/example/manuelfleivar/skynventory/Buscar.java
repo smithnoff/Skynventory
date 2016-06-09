@@ -51,7 +51,7 @@ public  String codigo="";
         if (articulosLista.getCount()>0) {
             articulosLista.moveToLast();
 
-            ultimoAdd.setText(ultimoAdd.getText().toString() + "\nCodigo: " + articulosLista.getString(2) + "\nNombre: " + articulosLista.getString(3) + "\nFecha Registro: " + articulosLista.getString(12));
+            ultimoAdd.setText("Total de Articulos Registrados: "+articulosLista.getCount()+"\n"+ultimoAdd.getText().toString() + "\nCodigo: " + articulosLista.getString(2) + "\nNombre: " + articulosLista.getString(3) + "\nFecha Registro: " + articulosLista.getString(12));
         }
         listAdapter = new ArrayAdapter<>(this,android.R.layout.simple_list_item_1,listado);
         itemList.setEmptyView(emptyText);
