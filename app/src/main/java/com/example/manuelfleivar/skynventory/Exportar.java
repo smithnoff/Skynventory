@@ -11,6 +11,8 @@ import android.view.View;
 
 import java.io.File;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Locale;
 
 import jxl.Workbook;
@@ -51,12 +53,13 @@ public class Exportar extends AppCompatActivity {
         final Cursor articulosLista;
         articulosLista=mn.ObtenerArticulosc();
 
+        currentDate = new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault()).format(new Date());
 
         btExport=(com.github.clans.fab.FloatingActionButton)findViewById(R.id.menu_i1);
         btExport.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String Fnamexls="Inventario"  + ".xls";
+                String Fnamexls="Inventario_" +currentDate + ".xls";
                 File sdCard = Environment.getExternalStorageDirectory();
                 File directory = new File (sdCard.getAbsolutePath() + "/Download");
                 directory.mkdirs();
@@ -79,6 +82,9 @@ public class Exportar extends AppCompatActivity {
                     Label label4 = new Label(4,0,"Referencia");
                     Label label5= new Label(5,0,"Ubicacion");
                     Label label6 = new Label(6,0,"Fecha Ven.");
+                    Label label7 = new Label(7,0,"Categoria");
+                    Label label8 = new Label(8,0,"Estado");
+                    Label label9 = new Label(9,0,"Fecha Reg.");
                     try {
                         sheet.addCell(label);
                         sheet.addCell(label1);
@@ -87,6 +93,9 @@ public class Exportar extends AppCompatActivity {
                         sheet.addCell(label4);
                         sheet.addCell(label5);
                         sheet.addCell(label6);
+                        sheet.addCell(label7);
+                        sheet.addCell(label8);
+                        sheet.addCell(label9);
                     } catch (RowsExceededException e) {
                         // TODO Auto-generated catch block
                         e.printStackTrace();
@@ -99,21 +108,28 @@ public class Exportar extends AppCompatActivity {
                      articulosLista.moveToFirst();
                      do {
 
-                         Label label8 = new Label(0,fila, articulosLista.getString(1));
-                         Label label9 = new Label(1,fila,articulosLista.getString(2));
-                         Label label10 = new Label(2,fila,articulosLista.getString(3));
-                         Label label11= new Label(3,fila,articulosLista.getString(4));
-                         Label label12 = new Label(4,fila,articulosLista.getString(5));
-                         Label label13= new Label(5,fila,articulosLista.getString(6));
-                         Label label14 = new Label(6,fila,articulosLista.getString(7));
+                         Label label10 = new Label(0,fila, articulosLista.getString(2));
+                         Label label11 = new Label(1,fila,articulosLista.getString(3));
+                         Label label12 = new Label(2,fila,articulosLista.getString(1));
+                         Label label13= new Label(3,fila,articulosLista.getString(6));
+                         Label label14 = new Label(4,fila,articulosLista.getString(5));
+                         Label label15= new Label(5,fila,articulosLista.getString(7));
+                         Label label17= new Label(6,fila,articulosLista.getString(9));
+                         Label label18= new Label(7,fila,articulosLista.getString(11));
+                         Label label19= new Label(8,fila,articulosLista.getString(10));
+
+                         Label label16 = new Label(9,fila,articulosLista.getString(12));
                          try {
                              sheet.addCell(label14);
-                             sheet.addCell(label8);
-                             sheet.addCell(label9);
                              sheet.addCell(label10);
                              sheet.addCell(label11);
                              sheet.addCell(label12);
                              sheet.addCell(label13);
+                             sheet.addCell(label15);
+                             sheet.addCell(label16);
+                             sheet.addCell(label17);
+                             sheet.addCell(label18);
+                             sheet.addCell(label19);
                          } catch (RowsExceededException e) {
                              // TODO Auto-generated catch block
                              e.printStackTrace();
@@ -140,7 +156,7 @@ public class Exportar extends AppCompatActivity {
                     // TODO Auto-generated catch block
                     e.printStackTrace();
                 }
-                Snackbar.make(v,"Archivo creado satisfactoriamente: vaya a la carpeta Download para ver archivo",Snackbar.LENGTH_LONG).show();
+                Snackbar.make(v,"Archivo creado satisfactoriamente: vaya a la carpeta de Descargas para ver archivo",Snackbar.LENGTH_LONG).show();
             }
 
         });

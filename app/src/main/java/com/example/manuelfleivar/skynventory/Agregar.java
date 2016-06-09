@@ -10,10 +10,10 @@ import android.os.Bundle;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -25,20 +25,26 @@ import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 import google.zxing.integration.android.IntentIntegrator;
 import google.zxing.integration.android.IntentResult;
 
 public class Agregar extends AppCompatActivity {
     Button escanear, guardar;
-    Spinner spCategoria;
+    Spinner spCategoria,spUbicacion;
     DBManager mn;
     LinearLayout contenedorCodigo;
     EditText codigo, nombre, fadquisicion, fvencimiento, marca, color, modelo, referencia, ubicacion;
     CheckBox pcodigo;
     RadioGroup rgEstado;
+    private String currentDate;
+    private int idEstado;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -71,17 +77,32 @@ public class Agregar extends AppCompatActivity {
         color=(EditText)findViewById(R.id.eda_color);
         modelo=(EditText)findViewById(R.id.eda_modelo);
         spCategoria=(Spinner)findViewById(R.id.spa_categoria) ;
+        spUbicacion=(Spinner)findViewById(R.id.spa_cateubicacion) ;
         referencia=(EditText)findViewById(R.id.eda_referencia);
         ubicacion=(EditText)findViewById(R.id.eda_ubicacion);
         guardar=(Button)findViewById(R.id.bta_guardar);
         List<String> lista=mn.ObtenerCategorias();
+        List<String> lista2=mn.ObtenerUbicacion();
         codigo.setText("N/A");
         ArrayAdapter<String> data=new ArrayAdapter<String>(Agregar.this,android.R.layout.simple_spinner_item,lista);
         data.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-
+        ArrayAdapter<String> data2=new ArrayAdapter<String>(Agregar.this,android.R.layout.simple_spinner_item,lista2);
+        data2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spCategoria.setAdapter(data);
+spUbicacion.setAdapter(data2);
+         spUbicacion.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+             @Override
+             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                 ubicacion.setText(""+spUbicacion.getItemAtPosition(position).toString());
 
 
+             }
+
+             @Override
+             public void onNothingSelected(AdapterView<?> parent) {
+
+             }
+         });
         guardar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -89,10 +110,31 @@ public class Agregar extends AppCompatActivity {
                     Snackbar.make(v,"El nombre o el codigo no puede ir vacios",Snackbar.LENGTH_SHORT).show();
 
                 }else{
+                    idEstado=0;
+                    String state="";
+                    switch (rgEstado.getCheckedRadioButtonId())
+                    {
+                        case R.id.rba_nuevo:
+                            idEstado=1;
+                            state="Nuevo";
+                            break;
+                        case R.id.rba_bueno:
+                            idEstado=2;
+                            state="Bueno";
+                            break;
+                        case R.id.rba_danado:
+                            idEstado=3;
+                            state="Danado";
+                            break;
+                        case R.id.rba_reparado:
+                            idEstado=4;
+                            state="Reparacion";
+                            break;
+                    }
                     AlertDialog.Builder alerta=new AlertDialog.Builder(Agregar.this);
                     alerta.setTitle("¿Estas seguro que desea guardar estos datos?");
                     //spCategoria.getSelectedItem().toString();
-                    alerta.setMessage("Codigo:"+ codigo.getText().toString()+
+                    alerta.setMessage("Categoria:"+ spCategoria.getSelectedItem().toString()+"\nCodigo:"+ codigo.getText().toString()+
                             "\nMarca:"+marca.getText().toString()+
                             "\nNombre:"+nombre.getText().toString()+
                             "\nColor / Sabor:"+ color.getText().toString()+
@@ -100,32 +142,21 @@ public class Agregar extends AppCompatActivity {
                             "\nReferencia:"+referencia.getText().toString()+
                             "\nFecha de Adquisicion:"+fadquisicion.getText().toString()+
                             "\nFecha de Vencimiento:"+fvencimiento.getText().toString()+
-                            "\nUbicacion:"+ubicacion.getText().toString());
+                            "\nUbicacion:"+ubicacion.getText().toString()+
+
+                            "\nEstado:"+state);
 
                     alerta.setPositiveButton("Guardar", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
-                            int idEstado=0;
-                            switch (rgEstado.getCheckedRadioButtonId())
-                            {
-                                case R.id.rba_nuevo:
-                                    idEstado=1;
-                                    break;
-                                case R.id.rba_bueno:
-                                    idEstado=2;
-                                    break;
-                                case R.id.rba_danado:
-                                    idEstado=3;
-                                    break;
-                                case R.id.rba_reparado:
-                                    idEstado=4;
-                                    break;
-                            }
+
+                            currentDate = new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault()).format(new Date());
+
                             mn.insertarArticulo(codigo.getText().toString(),
                                     nombre.getText().toString(),marca.getText().toString(),
                                     referencia.getText().toString(),modelo.getText().toString(),
                                     ubicacion.getText().toString(),fadquisicion.getText().toString(),
-                                    fvencimiento.getText().toString(),color.getText().toString(),idEstado);
+                                    fvencimiento.getText().toString(),color.getText().toString(),idEstado,spCategoria.getSelectedItem().toString(),currentDate);
                             Toast.makeText(Agregar.this, "Articulo agregado con Exito!!!", Toast.LENGTH_SHORT).show();
                             //para eliminar al regresar al registro
                             codigo.setText("");
@@ -140,7 +171,7 @@ public class Agregar extends AppCompatActivity {
 
                         }
                     });
-                    alerta.setNegativeButton("Cancelar", null);
+                    alerta.setNegativeButton("Cancelar", null).setIcon(R.drawable.skylogo);
                     alerta.create().show();
 
 

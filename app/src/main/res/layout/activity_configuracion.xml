@@ -32,13 +32,15 @@
             android:textColorHint="@color/colorAccent"
             android:ems="10"
             android:id="@+id/etElemento"
-            android:layout_gravity="center_horizontal" />
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="8dp" />
 
         <Spinner
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/spAddCategory"
-            android:layout_gravity="center_horizontal" />
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="8dp" />
 
         <Button
             android:layout_width="80dp"
@@ -47,16 +49,10 @@
             android:id="@+id/btAddCat"
             android:layout_gravity="center_horizontal"
             android:background="@drawable/bt_circle"
-            android:textColor="@android:color/white" />
+            android:textColor="@android:color/white"
+            android:layout_marginBottom="8dp"
+            android:layout_marginTop="8dp" />
 
-        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-            xmlns:tools="http://schemas.android.com/tools"
-            android:layout_width="match_parent"
-            android:layout_height="42dp"
-            android:orientation="vertical"
-            android:gravity="center"
-            android:weightSum="1"
-            android:layout_weight="0.46">
 
             <View
                 android:layout_width="match_parent"
@@ -68,16 +64,36 @@
 
             <TextView
                 android:layout_width="match_parent"
-                android:layout_height="0dp"
+                android:layout_height="wrap_content"
                 android:id="@+id/textView8"
                 android:layout_gravity="center_horizontal"
-                android:text="Eliminar Base de Datos"
+                android:text="Eliminar Bases de Datos:"
                 android:textSize="22dp"
-                android:layout_weight="0.27"
                 android:textColor="#030000"
-                android:layout_marginTop="10dp" />
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="15dp" />
 
-        </LinearLayout>
+
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Eliminar Todos los Articulos"
+            android:id="@+id/checkBox"
+            android:checked="false" />
+
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Eliminar Categorias"
+            android:id="@+id/checkBox2"
+            android:checked="false" />
+
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Eliminar Zonas"
+            android:id="@+id/checkBox3"
+            android:checked="false" />
 
         <Button
             android:layout_width="80dp"
@@ -86,7 +102,8 @@
             android:id="@+id/btc_eliminar"
             android:layout_gravity="center_horizontal"
             android:background="@drawable/bt_circle"
-            android:textColor="@android:color/white" />
+            android:textColor="@android:color/white"
+            android:layout_marginTop="8dp" />
 
 
     </LinearLayout>

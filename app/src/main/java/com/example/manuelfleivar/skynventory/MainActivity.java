@@ -15,6 +15,7 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+
         agregar=(com.github.clans.fab.FloatingActionButton)findViewById(R.id.menu_item);
         buscar=(com.github.clans.fab.FloatingActionButton)findViewById(R.id.menu_item2);
         estado=(com.github.clans.fab.FloatingActionButton)findViewById(R.id.menu_item3);

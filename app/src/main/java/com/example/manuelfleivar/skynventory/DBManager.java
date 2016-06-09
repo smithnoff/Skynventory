@@ -30,7 +30,7 @@ public class DBManager {
 
     public static final String crearArticulos_t="CREATE TABLE articulos(_id INTEGER PRIMARY KEY AUTOINCREMENT, marca TEXT(20), " +
             "codigo TEXT(15) NOT NULL, nombre TEXT NOT NULL, " +
-            "colorsabor TEXT, referencia TEXT,modelo TEXT, ubicacion TEXT, fechaadq TEXT, fechaven TEXT,estado INTEGER);";
+            "colorsabor TEXT, referencia TEXT,modelo TEXT, ubicacion TEXT, fechaadq TEXT, fechaven TEXT,estado INTEGER, categoria TEXT,registro TEXT);";
     DBHelper helper;
     SQLiteDatabase db;
 
@@ -58,7 +58,47 @@ public class DBManager {
         List<String> categorias= new ArrayList<>();
         Cursor c=db.rawQuery("select * from "+tabla,null);
         if(c.moveToFirst()){
+            do {if(c.getString(2).equals("categoria"))
+                categorias.add(c.getString(1));
+            }while(c.moveToNext());
+
+        }
+        c.close();
+        return categorias;
+    }
+
+    public void modificar(String cod,String nom,String mar,String ref,String mod,String ubi,String fad,String fvn,String cols,int stt,String cat){
+
+
+        db.update(tabla2, contenedorEditar(nom,mar,ref,mod,ubi,fad,fvn,cols,stt,cat), "codigo="+cod, null);
+
+    }
+    public ContentValues contenedorEditar(String nom,String mar,String ref,String mod,String ubi,String fad,String fvn,String cols,int stt,String cat)
+    {
+        ContentValues contenedor=new ContentValues();
+        contenedor.put("nombre",nom);
+
+        contenedor.put("colorsabor",cols);
+        contenedor.put("marca",mar);
+        contenedor.put("referencia",ref);
+        contenedor.put("modelo",mod);
+        contenedor.put("ubicacion",ubi);
+        contenedor.put("fechaadq",fad);
+        contenedor.put("fechaven",fvn);
+        contenedor.put("estado",stt);
+        contenedor.put("categoria",cat);
+
+        return contenedor;
+    }
+
+
+    public List<String> ObtenerUbicacion() {
+
+        List<String> categorias= new ArrayList<>();
+        Cursor c=db.rawQuery("select * from "+tabla,null);
+        if(c.moveToFirst()){
             do {
+                if(c.getString(2).equals("zona"))
                 categorias.add(c.getString(1));
             }while(c.moveToNext());
 
@@ -68,11 +108,11 @@ public class DBManager {
     }
 
     //Metodos para agregar y obtener articulos
-    public void insertarArticulo(String cod,String nom,String mar,String ref,String mod,String ubi,String fad,String fvn,String cols,int stt)
+    public void insertarArticulo(String cod,String nom,String mar,String ref,String mod,String ubi,String fad,String fvn,String cols,int stt, String cat,String reg)
     {
-        db.insert(tabla2,null,ContenedorArticulos(cod,nom,mar,ref,mod,ubi,fad,fvn,cols,stt));
+        db.insert(tabla2,null,ContenedorArticulos(cod,nom,mar,ref,mod,ubi,fad,fvn,cols,stt,cat,reg));
     }
-    public ContentValues ContenedorArticulos(String cod,String nom,String mar,String ref,String mod,String ubi,String fad,String fvn,String cols,int stt)
+    public ContentValues ContenedorArticulos(String cod,String nom,String mar,String ref,String mod,String ubi,String fad,String fvn,String cols,int stt,String cat,String reg)
     {
         ContentValues contenedor=new ContentValues();
         contenedor.put("nombre",nom);
@@ -85,26 +125,19 @@ public class DBManager {
         contenedor.put("fechaadq",fad);
         contenedor.put("fechaven",fvn);
         contenedor.put("estado",stt);
+        contenedor.put("categoria",cat);
+        contenedor.put("registro",reg);
         return contenedor;
 
     }
 
-    public List<String> ObtenerArticulos() {
+    public Cursor ObtenerArticulos() {
 
-        List<String> articulos= new ArrayList<>();
+
         Cursor c=db.rawQuery("select * from "+tabla2,null);
-        if(c.getCount()>0) {
 
 
-            if (c.moveToFirst()) {
-                do {
-                    articulos.add(c.getString(3)+" "+c.getString(2));
-                } while (c.moveToNext());
-
-            }
-        }
-        c.close();
-        return articulos;
+        return c;
     }
     public Cursor ObtenerArticulosc() {
 
@@ -126,9 +159,16 @@ public class DBManager {
     {
 
         if(op==1)
-            db.delete(tabla,"",null);
-        else
             db.delete(tabla2,"",null);
+        else
+        if(op==2)
+            db.delete(tabla,"descripcion = "+"'categoria'",null);
+        else
+            db.delete(tabla, "descripcion='zona'", null);
+    }
+    public void borrarArt(String code)
+    {
+        db.delete(tabla2,"codigo='"+code+"'",null);
     }
 
 }

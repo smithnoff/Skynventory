@@ -28,37 +28,21 @@
                 android:spinnerMode="dialog"
                 android:layout_marginBottom="8sp" />
 
-            <CheckBox
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Posee Codigo"
-                android:id="@+id/chba_poseecod"
-                android:textColor="@color/colorAccent" />
 
-            <LinearLayout
-                android:orientation="horizontal"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:id="@+id/contenedorCodigo"
-                android:visibility="gone"
-                android:weightSum="1"
-                android:layout_marginBottom="8sp">
+
+
 
                 <EditText
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:enabled="false"
                     android:id="@+id/eda_codigo"
                     android:hint="Codigo"
                     android:layout_weight="0.95"
                     android:singleLine="true"
                     android:textColorHint="@color/colorAccent" />
 
-                <Button
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="escanear"
-                    android:id="@+id/bta_escanear" />
-            </LinearLayout>
+
 
             <EditText
                 android:layout_width="317dp"
@@ -180,10 +164,12 @@
             </RadioGroup>
 
             <Button
+                android:layout_marginTop="10dp"
                 android:layout_width="100dp"
-
                 android:layout_height="100dp"
-                android:text="AGREGAR"
+
+
+                android:text="Editar"
                 android:textColor="#ffffff"
                 android:background="@drawable/bt_circle"
                 android:id="@+id/bta_guardar"
@@ -192,3 +178,4 @@
         </LinearLayout>
     </ScrollView>
 </LinearLayout>
+

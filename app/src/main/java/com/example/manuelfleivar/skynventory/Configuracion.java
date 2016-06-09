@@ -8,6 +8,7 @@ import android.support.design.widget.Snackbar;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Spinner;
 
@@ -15,6 +16,7 @@ public class Configuracion extends Activity {
     EditText elemento;
     Spinner listaElemento;
     Button agregar, eliminar;
+    CheckBox checkArt,checkCat,checkZon;
     DBManager mn;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,6 +26,9 @@ public class Configuracion extends Activity {
         eliminar=(Button)findViewById(R.id.btc_eliminar);
         elemento=(EditText)findViewById(R.id.etElemento);
         listaElemento=(Spinner)findViewById(R.id.spAddCategory);
+        checkArt=(CheckBox)findViewById(R.id.checkBox);
+        checkCat=(CheckBox)findViewById(R.id.checkBox2);
+        checkZon=(CheckBox)findViewById(R.id.checkBox3);
         ArrayAdapter adapter=ArrayAdapter.createFromResource(Configuracion.this,R.array.elemento,android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         listaElemento.setAdapter(adapter);
@@ -61,16 +66,31 @@ public class Configuracion extends Activity {
         });
         eliminar.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-
+            public void onClick(final View v) {
+                String selecciones="";
+if (checkArt.isChecked())selecciones="* Articulos";
+                if (checkCat.isChecked())selecciones+="\n* Categorias";
+                if (checkZon.isChecked())selecciones+="\n* Zonas";
                 AlertDialog.Builder alerta=new AlertDialog.Builder(Configuracion.this);
                 alerta.setTitle("¿Esta seguro que desea eliminar la Base de datos?")
-                        .setMessage("Esta a punto de eliminar toda la informacion en la Base de datos.")
+                        .setMessage("Esta a punto de eliminar toda la informacion en la Base de datos.\n"+selecciones)
                         .setPositiveButton("Aceptar", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
+                                if (!checkArt.isChecked() && !checkCat.isChecked() && !checkZon.isChecked())
+                                {
+                                    Snackbar.make(v,"Seleccione al menos una casilla",Snackbar.LENGTH_LONG).show();
+                                }else{
+                                    if (checkArt.isChecked())
+                                        mn.borrarDB(1);
+                                    if (checkCat.isChecked())
+                                        mn.borrarDB(2);
+                                    if (checkZon.isChecked())
+                                        mn.borrarDB(3);
 
-                                mn.borrarDB(2);
+
+                                }
+
 
                             }
                         }).setNegativeButton("Cancelar",null).create().show();

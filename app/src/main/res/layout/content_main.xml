@@ -82,7 +82,16 @@
             fab:fab_label="AGREGAR" />
     </com.github.clans.fab.FloatingActionMenu>
 
-
+    <DigitalClock
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/digitalClock"
+        android:textColor="#f902dc"
+        android:textSize="30dp"
+        android:layout_alignTop="@+id/menuBoton"
+        android:layout_toRightOf="@+id/menuBoton"
+        android:layout_toEndOf="@+id/menuBoton"
+        android:layout_marginTop="95dp" />
 
 
 </RelativeLayout>

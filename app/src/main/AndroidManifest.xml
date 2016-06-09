@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.manuelfleivar.skynventory">
-<uses-permission android:name="android.permission.INTERNET"/>
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
 
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
     <application
         android:allowBackup="true"
         android:icon="@drawable/skylogo"
@@ -21,16 +22,26 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Agregar" android:label="Agregar Articulos" />
-
-        <activity android:name=".Configuracion" android:label="Configuracion"/>
-        <activity android:name=".Buscar" android:label="Buscar Articulo"/>
-        <activity android:name=".Exportar" android:label="Exportar Inventario"/>
-        <activity android:name=".Acerca" android:label="Acerca de"/>
+        <activity
+            android:name=".Agregar"
+            android:label="Agregar Articulos" />
+        <activity
+            android:name=".Configuracion"
+            android:label="Configuracion" />
+        <activity
+            android:name=".Buscar"
+            android:label="Buscar Articulo" />
+        <activity
+            android:name=".Exportar"
+            android:label="Exportar Inventario" />
+        <activity
+            android:name=".Acerca"
+            android:label="Acerca de" />
         <activity
             android:name=".Estado"
             android:label="@string/title_activity_estado"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".Editar"></activity>
     </application>
 
 </manifest>
