@@ -15,3 +15,8 @@
 #-keepclassmembers class fqcn.of.javascript.interface.for.webview {
 #   public *;
 #}
+-dontwarn android.security.NetworkSecurityPolicy
+-dontwarn com.google.android.gms.internal.zzac
+-dontwarn com.google.android.gms.internal.zzw$zz
+-dontwarn com.google.android.gms.internal.zzw﻿
+-dontwarn org.apache.**
